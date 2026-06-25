@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>APVENTURE — Ideas to Impact</title>
+<meta name="description" content="APVENTURE builds modern websites, web applications, and digital solutions that transform ideas into successful businesses. Website development, design, e-commerce, and more for startups and growing brands." />
+<meta name="keywords" content="web development, web design agency, e-commerce development, startup website, APVENTURE" />
+
+<!-- Fonts: Sora (display), Space Grotesk (heading), Inter (body) -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ============================================================
+     PAGE LOADER — fullscreen video, plays once per browser
+     session (skipped on repeat visits/navigations), full length.
+     Starts muted (browser requirement for instant autoplay);
+     sound turns on automatically the first time the visitor
+     clicks/taps anywhere on the page. Skip Intro jumps straight
+     to the site at any time.
+     ============================================================ -->
+<div id="page-loader" class="page-loader">
+  <video
+    id="loader-video"
+    class="loader-video"
+    src="APVENTURE_Premium_Loader_Anima.mp4"
+    autoplay
+    muted
+    playsinline
+    preload="auto"
+  ></video>
+
+  <div class="loader-controls">
+    <span id="loader-sound-status" class="loader-sound-status">
+      <svg class="icon-sound-off" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+      <svg class="icon-sound-on" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg>
+      <span class="loader-sound-label">Tap anywhere for sound</span>
+    </span>
+    <button id="loader-skip-btn" class="loader-control-btn loader-skip-btn">
+      <span>Skip Intro</span>
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 17 18 12 13 7"></polyline><polyline points="6 17 11 12 6 7"></polyline></svg>
+    </button>
+  </div>
+</div>
+
+<!-- Scroll progress bar -->
+<div id="scroll-progress" class="scroll-progress"></div>
+
+<!-- ============================================================
+     NAVBAR
+     ============================================================ -->
+<header id="navbar" class="navbar">
+  <nav class="navbar-inner glass">
+    <a href="#home" class="logo-link" data-cursor-hover>
+      <span class="logo">
+        <svg viewBox="0 0 64 64" class="logo-svg-nav" fill="none" aria-hidden="true">
+          <path d="M6 32 L58 8 L40 58 L32 36 Z" fill="url(#logoGradientNav)" fill-opacity="0.15" stroke="url(#logoGradientNav)" stroke-width="2.5" stroke-linejoin="round" />
+          <path d="M32 36 L58 8" stroke="url(#logoGradientNav)" stroke-width="2.5" stroke-linecap="round" />
+          <defs>
+            <linearGradient id="logoGradientNav" x1="0" y1="0" x2="64" y2="64">
+              <stop offset="0%" stop-color="#2563eb" />
+              <stop offset="50%" stop-color="#8b5cf6" />
+              <stop offset="100%" stop-color="#f97316" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <span class="logo-wordmark">APVENTURE</span>
+      </span>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#home" data-cursor-hover>Home</a></li>
+      <li><a href="#about" data-cursor-hover>About</a></li>
+      <li><a href="#services" data-cursor-hover>Services</a></li>
+      <li><a href="#portfolio" data-cursor-hover>Portfolio</a></li>
+      <li><a href="#pricing" data-cursor-hover>Pricing</a></li>
+      <li><a href="#blog" data-cursor-hover>Blog</a></li>
+      <li><a href="#contact" data-cursor-hover>Contact</a></li>
+    </ul>
+
+    <div class="navbar-actions">
+      <a href="#contact" class="magnetic-btn magnetic-btn--primary nav-cta" data-cursor-hover>
+        <span>Let's Talk</span>
+      </a>
+    </div>
+
+    <div class="navbar-mobile-actions">
+      <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu" data-cursor-hover>
+        <svg id="icon-menu" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+  </nav>
+
+  <div id="mobile-menu" class="mobile-menu glass">
+    <a href="#home" class="mobile-menu-link">Home</a>
+    <a href="#about" class="mobile-menu-link">About</a>
+    <a href="#services" class="mobile-menu-link">Services</a>
+    <a href="#portfolio" class="mobile-menu-link">Portfolio</a>
+    <a href="#pricing" class="mobile-menu-link">Pricing</a>
+    <a href="#blog" class="mobile-menu-link">Blog</a>
+    <a href="#contact" class="mobile-menu-link">Contact</a>
+    <div class="mobile-menu-cta-wrap">
+      <a href="#contact" class="magnetic-btn magnetic-btn--primary" style="width:100%">
+        <span>Let's Talk</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section id="home" class="hero">
+  <div class="aurora-bg aurora-bg--hero" aria-hidden="true">
+    <div class="aurora-blob aurora-blob--1"></div>
+    <div class="aurora-blob aurora-blob--2"></div>
+    <div class="aurora-blob aurora-blob--3"></div>
+    <div class="aurora-grid"></div>
+  </div>
+
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <div class="hero-badge reveal-init" data-anim="fade-in-up-sm" data-delay="100">
+        <span class="dot-gradient"></span>
+        Digital Product Studio
+      </div>
+
+      <h1 class="hero-title">
+        <span class="text-reveal-line"><span class="text-reveal-inner" data-delay="150">Ideas to Impact.</span></span>
+        <span class="text-reveal-line"><span class="text-reveal-inner" data-delay="270">Solutions that</span></span>
+        <span class="text-reveal-line"><span class="text-reveal-inner text-gradient-brand" data-delay="390">Drive Growth.</span></span>
+      </h1>
+	
+      <p class="hero-sub reveal-init" data-anim="fade-in-up" data-delay="650">
+        We build modern websites, web applications, and digital solutions that transform ideas into successful businesses.
+      </p>
+
+      <div class="hero-actions reveal-init" data-anim="fade-in-up" data-delay="800">
+        <a href="#contact" class="magnetic-btn magnetic-btn--primary" data-cursor-hover><span>Start a Project</span></a>
+        <a href="#contact" class="magnetic-btn magnetic-btn--secondary" data-cursor-hover><span>Book a Consultation</span></a>
+      </div>
+
+      <div class="hero-stats reveal-init" data-anim="fade-in" data-delay="1000">
+        <div class="hero-stat"><p class="hero-stat-num">120+</p><p>Projects shipped</p></div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat"><p class="hero-stat-num">98%</p><p>Client satisfaction</p></div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat"><p class="hero-stat-num">8+</p><p>Years building</p></div>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal-init" data-anim="scale-in" data-delay="300">
+      <img src="logov-mark.png" alt="APVENTURE — Ideas to Impact" class="hero-logo-img" />
+    </div>
+  </div>
+
+  <div class="hero-scroll-cue reveal-init" data-anim="fade-in" data-delay="1400">
+    <span>Scroll</span>
+    <div class="scroll-cue-arrow">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TRUSTED BY MARQUEE
+     ============================================================ -->
+<section class="trusted-by">
+  <div class="container">
+    <p class="trusted-by-label reveal" data-anim="fade-in-up">Trusted by ambitious teams</p>
+
+    <div class="marquee-wrap">
+      <div class="marquee-fade marquee-fade--left"></div>
+      <div class="marquee-fade marquee-fade--right"></div>
+      <div class="marquee-track" id="marquee-track">
+        <!-- duplicated set rendered by script.js for seamless loop -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SERVICES
+     ============================================================ -->
+<section id="services" class="section-pad">
+  <div class="container">
+    <div class="section-heading">
+      <span class="eyebrow reveal" data-anim="fade-in-up">
+        <span class="dot-gradient"></span>
+        What we do
+      </span>
+      <h2 class="section-title reveal" data-anim="fade-in-up" data-delay="80">Every capability your business needs to grow online.</h2>
+      <p class="section-desc reveal" data-anim="fade-in-up" data-delay="160">From first sketch to shipped product — design, engineering, content, and support, under one roof.</p>
+    </div>
+
+    <div class="services-grid" id="services-grid"></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PROCESS — From Idea to Impact
+     ============================================================ -->
+<section id="about" class="section-pad">
+  <div class="container">
+    <div class="section-heading">
+      <span class="eyebrow reveal" data-anim="fade-in-up">
+        <span class="dot-gradient"></span>
+        How we work
+      </span>
+      <h2 class="section-title reveal" data-anim="fade-in-up" data-delay="80">From Idea to Impact</h2>
+      <p class="section-desc reveal" data-anim="fade-in-up" data-delay="160">A disciplined five-stage process that keeps every project transparent, on schedule, and aligned with your goals.</p>
+    </div>
+
+    <div class="process-wrap">
+      <svg class="process-line-svg" viewBox="0 0 1000 8" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M10 4 L990 4" fill="none" stroke="var(--border-soft)" stroke-width="2" />
+        <path id="process-line-draw" d="M10 4 L990 4" fill="none" stroke="url(#processGradient)" stroke-width="2" stroke-linecap="round" />
+        <defs>
+          <linearGradient id="processGradient" x1="0" y1="0" x2="1000" y2="0">
+            <stop offset="0%" stop-color="#2563eb" />
+            <stop offset="50%" stop-color="#8b5cf6" />
+            <stop offset="100%" stop-color="#f97316" />
+          </linearGradient>
+        </defs>
+      </svg>
+
+      <div class="process-grid" id="process-grid"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     WHY CHOOSE APVENTURE
+     ============================================================ -->
+<section class="section-pad">
+  <div class="container why-choose-grid">
+    <div>
+      <div class="section-heading section-heading--left">
+        <span class="eyebrow reveal" data-anim="fade-in-up">
+          <span class="dot-gradient"></span>
+          Why APVENTURE
+        </span>
+        <h2 class="section-title reveal" data-anim="fade-in-up" data-delay="80">A team that ships, and sticks around.</h2>
+        <p class="section-desc reveal" data-anim="fade-in-up" data-delay="160">We combine senior-level craft with startup-speed execution — so you get a partner, not just a vendor.</p>
+      </div>
+
+      <div class="reasons-grid" id="reasons-grid"></div>
+    </div>
+
+    <div class="rocket-wrap">
+      <div class="rocket-glow"></div>
+      <div class="rocket-float">
+        <img src="logov-mark.png" alt="APVENTURE" class="rocket-logo-img" />
+      </div>
+      <div class="rocket-cloud rocket-cloud--1"></div>
+      <div class="rocket-cloud rocket-cloud--2"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PORTFOLIO
+     ============================================================ -->
+<section id="portfolio" class="section-pad">
+  <div class="container">
+    <div class="section-heading">
+      <span class="eyebrow reveal" data-anim="fade-in-up">
+        <span class="dot-gradient"></span>
+        Selected work
+      </span>
+      <h2 class="section-title reveal" data-anim="fade-in-up" data-delay="80">Projects that turned ideas into businesses.</h2>
+    </div>
+
+    <div class="portfolio-filters" id="portfolio-filters"></div>
+
+    <div class="portfolio-grid" id="portfolio-grid"></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TESTIMONIALS
+     ============================================================ -->
+<section class="section-pad">
+  <div class="container container--narrow">
+    <div class="section-heading">
+      <span class="eyebrow reveal" data-anim="fade-in-up">
+        <span class="dot-gradient"></span>
+        Client voices
+      </span>
+      <h2 class="section-title reveal" data-anim="fade-in-up" data-delay="80">Don't take our word for it.</h2>
+    </div>
+
+    <div class="testimonial-wrap" id="testimonial-wrap">
+      <div class="testimonial-card glass" id="testimonial-card">
+        <!-- populated by script.js -->
+      </div>
+
+      <div class="testimonial-controls">
+        <button class="testimonial-arrow" id="testimonial-prev" aria-label="Previous testimonial" data-cursor-hover>
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <div class="testimonial-dots" id="testimonial-dots"></div>
+        <button class="testimonial-arrow" id="testimonial-next" aria-label="Next testimonial" data-cursor-hover>
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PRICING
+     ============================================================ -->
+<section id="pricing" class="section-pad">
+  <div class="container">
+    <div class="section-heading">
+      <span class="eyebrow reveal" data-anim="fade-in-up">
+        <span class="dot-gradient"></span>
+        Pricing
+      </span>
+      <h2 class="section-title reveal" data-anim="fade-in-up" data-delay="80">Transparent pricing for every stage.</h2>
+      <p class="section-desc reveal" data-anim="fade-in-up" data-delay="160">Static sites for quick launches, or a fully custom build for businesses that need more. No hidden fees.</p>
+    </div>
+
+    <div class="pricing-grid" id="pricing-grid"></div>
+
+    <div class="pricing-more-row reveal" data-anim="fade-in-up" data-delay="120">
+      <a href="pricing-details.html" class="pricing-more-link" data-cursor-hover>
+        <span>More</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     BLOG PREVIEW
+     ============================================================ -->
+<section id="blog" class="section-pad">
+  <div class="container">
+    <div class="section-heading">
+      <span class="eyebrow reveal" data-anim="fade-in-up">
+        <span class="dot-gradient"></span>
+        Insights
+      </span>
+      <h2 class="section-title reveal" data-anim="fade-in-up" data-delay="80">Notes from the studio.</h2>
+    </div>
+
+    <div class="blog-grid" id="blog-grid"></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CTA BANNER
+     ============================================================ -->
+<section id="contact" class="cta-section">
+  <div class="container">
+    <div class="cta-banner reveal" data-anim="scale-in">
+      <div class="aurora-bg aurora-bg--cta" aria-hidden="true">
+        <div class="cta-glow"></div>
+      </div>
+      <div class="cta-content">
+        <h2 class="cta-title">Ready to Turn Your Idea Into Impact?</h2>
+        <p class="cta-sub">Tell us where you want to go. We'll handle the design, the build, and everything that gets you there.</p>
+        <div class="cta-actions">
+          <a href="mailto:apventure45@gmail.com" class="magnetic-btn magnetic-btn--cta-light" data-cursor-hover><span>Start Project</span></a>
+          <a href="mailto:apventure45@gmail.com" class="magnetic-btn magnetic-btn--cta-outline" data-cursor-hover><span>Book Consultation</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid reveal" data-anim="fade-in-up">
+      <div>
+        <span class="logo">
+          <svg viewBox="0 0 64 64" class="logo-svg-footer" fill="none" aria-hidden="true">
+            <path d="M6 32 L58 8 L40 58 L32 36 Z" fill="url(#logoGradientFooter)" fill-opacity="0.15" stroke="url(#logoGradientFooter)" stroke-width="2.5" stroke-linejoin="round" />
+            <path d="M32 36 L58 8" stroke="url(#logoGradientFooter)" stroke-width="2.5" stroke-linecap="round" />
+            <defs>
+              <linearGradient id="logoGradientFooter" x1="0" y1="0" x2="64" y2="64">
+                <stop offset="0%" stop-color="#2563eb" />
+                <stop offset="50%" stop-color="#8b5cf6" />
+                <stop offset="100%" stop-color="#f97316" />
+              </linearGradient>
+            </defs>
+          </svg>
+          <span class="logo-wordmark">APVENTURE</span>
+        </span>
+        <p class="footer-about">Ideas to Impact. We build modern websites, web applications, and digital solutions that transform ideas into successful businesses.</p>
+        <div class="footer-socials">
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" data-cursor-hover>
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+          </a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" data-cursor-hover>
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          </a>
+          <a href="https://www.instagram.com/buildwithapventure/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" data-cursor-hover>
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="footer-heading">Services</h4>
+        <ul class="footer-list">
+          <li><a href="#services">Website Development</a></li>
+          <li><a href="#services">Website Design</a></li>
+          <li><a href="#services">Web Applications</a></li>
+          <li><a href="#services">E-Commerce Solutions</a></li>
+          <li><a href="#services">Content Writing</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-heading">Quick Links</h4>
+        <ul class="footer-list">
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#blog">Blog</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-heading">Contact</h4>
+        <a href="mailto:apventure45@gmail.com" class="footer-email">
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          apventure45@gmail.com
+        </a>
+        <p class="footer-note">Available for new projects worldwide.</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p id="footer-year">© 2026 APVENTURE. All rights reserved.</p>
+      <p>Ideas to Impact.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     LIBRARIES (CDN): GSAP + ScrollTrigger (process line draw,
+     Lenis ticker), Lenis (smooth scroll)
+     ============================================================ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.3.23/dist/lenis.min.js"></script>
+
+<script src="script.js"></script>
+</body>
+</html>

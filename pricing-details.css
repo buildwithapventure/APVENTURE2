@@ -1,0 +1,356 @@
+/* ============================================================
+   PRICING DETAILS PAGE — extends style.css design tokens
+   ============================================================ */
+
+.pd-hero {
+  position: relative;
+  padding-top: 9rem;
+  overflow: hidden;
+}
+
+.pd-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--fg-muted);
+  transition: color 0.3s, gap 0.3s var(--ease-premium);
+}
+.pd-back-link:hover {
+  color: var(--color-primary);
+  gap: 0.7rem;
+}
+
+/* ============================================================
+   DETAILED PLAN CARDS
+   ============================================================ */
+
+.pd-plans-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+@media (min-width: 768px) { .pd-plans-grid { grid-template-columns: 1fr 1fr; } }
+
+.pd-plan-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border-soft);
+  background: var(--bg-elevated);
+  padding: 2rem;
+  box-shadow: var(--shadow-card);
+  transition: border-color 0.3s, transform 0.3s;
+}
+.pd-plan-card:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-4px);
+}
+.pd-plan-card.is-recommended {
+  border-color: transparent;
+  box-shadow: 0 0 0 1.5px var(--color-primary), 0 20px 60px -20px rgba(37,99,235,0.4);
+}
+
+.pd-plan-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.pd-plan-head h3 {
+  font-family: var(--font-heading);
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--fg);
+}
+
+.pd-plan-badge {
+  border-radius: 999px;
+  background-image: var(--gradient-brand);
+  padding: 0.25rem 0.875rem;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: white;
+  white-space: nowrap;
+}
+
+.pd-plan-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.pd-plan-price {
+  font-family: var(--font-heading);
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--fg);
+}
+
+.pd-plan-price-note {
+  font-size: 0.8125rem;
+  color: var(--fg-subtle);
+}
+
+.pd-plan-desc {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--fg-muted);
+}
+
+.pd-plan-section-label {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--fg-subtle);
+}
+
+.pd-plan-features {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.pd-plan-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  font-size: 0.9rem;
+  color: var(--fg-muted);
+}
+.pd-plan-feature svg {
+  margin-top: 2px;
+  flex-shrink: 0;
+  color: var(--color-primary);
+}
+
+.pd-plan-meta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  border-top: 1px solid var(--border-soft);
+  padding-top: 1.25rem;
+}
+
+.pd-plan-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.pd-plan-meta span:first-child {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--fg-subtle);
+}
+.pd-plan-meta span:last-child {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--fg);
+}
+
+.pd-plan-card .magnetic-btn {
+  margin-top: auto;
+  width: 100%;
+}
+
+/* ============================================================
+   COMPARISON TABLE
+   ============================================================ */
+
+.pd-table-wrap {
+  overflow-x: auto;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border-soft);
+  background: var(--bg-elevated);
+  box-shadow: var(--shadow-card);
+}
+
+.pd-table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+}
+
+.pd-table th, .pd-table td {
+  padding: 0.9rem 1.25rem;
+  text-align: left;
+  font-size: 0.875rem;
+  border-bottom: 1px solid var(--border-soft);
+  white-space: nowrap;
+}
+
+.pd-table thead th {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--fg);
+  background: var(--bg-elevated-2);
+}
+
+.pd-table thead th:first-child { border-radius: var(--radius-card) 0 0 0; }
+.pd-table thead th:last-child { border-radius: 0 var(--radius-card) 0 0; }
+
+.pd-table tbody th {
+  font-weight: 500;
+  color: var(--fg-muted);
+  white-space: normal;
+}
+
+.pd-table tbody td {
+  text-align: center;
+  color: var(--fg-muted);
+}
+
+.pd-table tbody tr:last-child th,
+.pd-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.pd-table .pd-check {
+  display: inline-flex;
+  color: var(--color-primary);
+}
+
+.pd-table .pd-dash {
+  color: var(--fg-subtle);
+}
+
+.pd-table .is-recommended-col {
+  background: var(--gradient-brand-soft);
+}
+
+/* ============================================================
+   ADD-ONS
+   ============================================================ */
+
+.pd-addons-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+@media (min-width: 640px) { .pd-addons-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1024px) { .pd-addons-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.pd-addon-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border-soft);
+  background: var(--bg-elevated);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.3s, border-color 0.3s;
+}
+.pd-addon-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-strong);
+}
+
+.pd-addon-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.pd-addon-top h4 {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--fg);
+}
+
+.pd-addon-price {
+  flex-shrink: 0;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.9375rem;
+  color: var(--color-primary);
+  white-space: nowrap;
+}
+
+.pd-addon-card p {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--fg-muted);
+}
+
+/* ============================================================
+   FAQ ACCORDION
+   ============================================================ */
+
+.pd-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.pd-faq-item {
+  border-radius: 1rem;
+  border: 1px solid var(--border-soft);
+  background: var(--bg-elevated);
+  overflow: hidden;
+}
+
+.pd-faq-question {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  text-align: left;
+  font-family: var(--font-heading);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--fg);
+}
+
+.pd-faq-question svg {
+  flex-shrink: 0;
+  color: var(--fg-muted);
+  transition: transform 0.35s var(--ease-premium);
+}
+
+.pd-faq-item.is-open .pd-faq-question svg {
+  transform: rotate(180deg);
+  color: var(--color-primary);
+}
+
+.pd-faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s var(--ease-premium);
+}
+
+.pd-faq-answer-inner {
+  padding: 0 1.5rem 1.25rem;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: var(--fg-muted);
+}
+
+.is-active-link {
+  color: var(--fg) !important;
+  position: relative;
+}
+.is-active-link::after {
+  content: "";
+  position: absolute;
+  left: 0.875rem;
+  right: 0.875rem;
+  bottom: 0.35rem;
+  height: 2px;
+  border-radius: 2px;
+  background-image: var(--gradient-brand);
+}
