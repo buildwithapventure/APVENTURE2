@@ -288,6 +288,16 @@
      ============================================================ */
 
   function initRevealAnimations() {
+    // Hero headline lines are always above the fold on page load, so
+    // they reveal immediately rather than waiting on a scroll-based
+    // IntersectionObserver — this guarantees they're never left stuck
+    // off-screen (translateY(110%)) if the observer's timing doesn't
+    // line up with the very first paint.
+    document.querySelectorAll(".hero-reveal-immediate").forEach(function (el) {
+      const delay = parseInt(el.dataset.delay || "0", 10);
+      setTimeout(function () { el.classList.add("in-view"); }, delay);
+    });
+
     if (prefersReducedMotion) {
       document.querySelectorAll(".reveal-init, .reveal, .text-reveal-inner").forEach(function (el) {
         el.classList.add("in-view");
@@ -312,13 +322,14 @@
     }, { threshold: 0.25 });
 
     document.querySelectorAll(".reveal-init, .reveal").forEach(function (el) { observer.observe(el); });
-    document.querySelectorAll(".text-reveal-inner").forEach(function (el) { observer.observe(el); });
+    document.querySelectorAll(".text-reveal-inner:not(.hero-reveal-immediate)").forEach(function (el) { observer.observe(el); });
 
     // Exposed so pages that inject .reveal-init content after their own
     // DOMContentLoaded handler (e.g. pricing-details.js) can register
     // those new elements with this same observer.
     window.__apventureObserveReveals = function (root) {
       (root || document).querySelectorAll(".reveal-init, .reveal, .text-reveal-inner").forEach(function (el) {
+        if (el.classList.contains("hero-reveal-immediate")) return;
         if (!el.classList.contains("in-view")) observer.observe(el);
       });
     };
